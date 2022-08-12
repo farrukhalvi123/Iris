@@ -4,15 +4,20 @@ from behave import *
 
 
 
-@then("We Login to the iris website")
-def step_impl(context):
-    time.sleep(5)
-    context.loginpage.enter_email("ngushashaguy@chevron.com")
-    context.loginpage.enter_password("Benue83!!")
+@then("I Login with {email} and {password}")
+def step_impl(context, email, password):
+    time.sleep(3)
+    context.loginpage.enter_email(email)
+    context.loginpage.enter_password(password)
     context.loginpage.click_login()
-    time.sleep(5)
+    time.sleep(10)
 
 
-@then("Verify we are on the View Page")
+
+@then("Verify we are on the View Page or Show error")
 def step_impl(context):
-   assert "View" in context.driver.page_source()
+    try:
+        assert "view" in context.driver.page_source
+    except:
+        assert "WRONG EMAIL" in context.driver.page_source
+
