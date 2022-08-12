@@ -9,7 +9,7 @@ from Constants.URLS import TestData
 import logging
 import os
 from Pages.Login import login
-
+from Pages.view_page import view_homepage
 
 @given("Launch the browser")
 def step_impl(context):
@@ -38,48 +38,14 @@ def step_impl(context):
     elif TestData.BROWSER == 'edge':
         context.driver = webdriver.Edge(executable_path=EdgeChromiumDriverManager().install())
 
-
-@when(u"Open the practice form")
-def step_impl(context):
-    try:
-        context.driver.get(TestData.practiceformpage)
-        context.practice = practiceform(context.driver)
-    except Exception as e:
-        print(e)
-        context.driver.close()
-        assert False, "Test failed in opening DEMOQA"
-
-
-@when("Open Drag and Drop Page")
-def step_impl(context):
-    try:
-        context.driver.get(TestData.draganddroppage)
-        context.draganddrop = draganddropclass(context.driver)
-    except Exception as e:
-        print(e)
-        context.driver.close()
-        assert False, "Test failed in opening DEMOQA"
-
-
 @then(u'Close the browser')
 def step_impl(context):
     context.driver.close()
     context.driver.quit()
 
 
-@when("Open Iframe Page")
-def step_impl(context):
-    context.driver.get(TestData.frames_url)
-    context.frames_handle = handling_frames(context.driver)
-
-
-@when("Open Dynamic Properties Page")
-def step_impl(context):
-    context.driver.get(TestData.dynamicprop)
-    context.dynamic_prop = dynamic_properties(context.driver)
-
-
 @when("Open the iris URL")
 def step_impl(context):
     context.driver.get(TestData.iris_app_login_page)
     context.loginpage = login(context.driver)
+    context.view = view_homepage(context.driver)
