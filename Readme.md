@@ -1,13 +1,28 @@
-For this Test I have used Page Object Model framework Along with BDD. 
+## **Python Behave BDD Framework**
 
-There are 4 feature files in total with 14 Scenarios. 
+This is a BDD automation framework developed on Selenium and Python Behave.
+Sample test side used in this project is - https://beta.speedhome.com/
 
-There are three set of Directories.
-Features: Containing all the test scenarios in Gherkin 
+Page Object Model is followed in this framework
 
-Steps: Containing all the Steps to run those scenarios in feature files
+**pages** folder contains the elements and corresponding actions of the pages
 
-Pages: Contains files with all the elements and their methods. 
+**features** folder contains **steps** folder which has all the test files and also the feature files.
+
+
+**requirements.txt** file contains all the python packages needed to run this framework
+
+**allure** directory contains the files generated with allure reports
+
+### **Commands to run the tests**
+
+**To run the test with allure report**
+` behave -f allure_behave.formatter:AllureFormatter -o allure/results ./features`
+' behave -f allure_behave.formatter:AllureFormatter -o allure/results ./features -D'
+
+**To run the test without allure report** 
+`behave features`
+
 
 To run this test. Following steps are mandatory.
 Download Pycharm with Python 3.9 Interpreter
@@ -21,5 +36,7 @@ To run all the test and generate report on behave you can use the following comm
 
 To run individual feature file.
 ** behave "file_name".features 
+
+
 
 or you can directly run individual tests or individual file from the file itself by click on Play button.

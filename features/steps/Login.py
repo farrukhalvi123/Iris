@@ -18,6 +18,11 @@ def step_impl(context, email, password):
 def step_impl(context):
     try:
         assert "view" in context.driver.page_source
+        print ("i am here")
     except:
         assert "WRONG EMAIL" in context.driver.page_source
+        print("no i am here")
+    # finally:
+    #     assert "Email is invalid" in context.driver.page_source
+    #     print("finally I am here")
 
